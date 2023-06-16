@@ -1,0 +1,20 @@
+<mat-toolbar color="primary">
+  <span>Fotoğraf Güncelle</span>
+</mat-toolbar>
+<div mat-dialog-content>
+  <div *ngIf="secUye">
+    <h3><b>Uye :</b>{{secUye.uyeSoyad}}</h3>
+    <img [src]="apiServis.siteUrl+ '/Dosyalar/' + secUye.uyeFoto" width="280" height="280">
+  </div>
+
+  <div>
+    <img [src]="secFoto" *ngIf="secFoto" width="280" height="280">
+  </div>
+
+  <input type="file" hidden="true" onclick="value = null" #foto (change)="FotoSec($event)">
+</div>
+<mat-dialog-actions>
+  <button mat-raised-button color="primary" (click)="foto.click()">Foto Yükle</button>&nbsp;
+  <button mat-raised-button color="primary" (click)="fotoDialogRef.close(uyeFoto)">Kaydet</button>&nbsp;
+  <button mat-raised-button color="warn" (click)="fotoDialogRef.close(undefined)">İptal</button>&nbsp;
+</mat-dialog-actions>
